@@ -29,6 +29,9 @@ public class ShopTypeController {
     public Result queryTypeList() {
         List<ShopType> typeList = typeService
                 .query().orderByAsc("sort").list();
-        return Result.ok(typeList);
+//        return Result.ok(typeList);
+        // 采用redis缓存进行商铺类型存储
+        return typeService.getList();
+
     }
 }
